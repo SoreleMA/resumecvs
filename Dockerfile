@@ -20,6 +20,8 @@ COPY . /app
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
-
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "resumecv.wsgi"]
