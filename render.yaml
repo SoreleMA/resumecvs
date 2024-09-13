@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: resumecvs
+    env: docker
+    autoDeploy: false
+    plan: free
+    region: oregon
+    envVars:
+      - key: ENV 
+        sync: False
+      - key: DEBUG
+        sync: False
+      - key: SECRET_KEY
+        sync: False
+      - key: ALLOWED_HOSTS
+        sync: False
+      - key: DB_BACKEND
+        sync: False
+      - key: DB_USERNAME
+        sync: False
+      - key: DB_PASSWORD
+        sync: False
+      - key: DB_NAME
+        sync: False
+      - key: DB_PORT
+        sync: False
+      - key: DB_HOST
+        sync: false
+      - key : ACCESS_TOKEN_LIFETIME
+        sync: False
+      - key: REFRESH_TOKEN_LIFETIME
+        sync: False
+      - key: ROTATE_REFRESH_TOKENS
+        sync: False
+      - key: BLACKLIST_AFTER_ROTATION
+        sync: False
+build:
+  commands:
+    - pip install -r requirements.txt
+    - python manage.py collectstatic --noinput
+      
