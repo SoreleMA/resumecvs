@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /resumecvs
+cd /app
 
 python manage.py collectstatic --clear --noinput
 
